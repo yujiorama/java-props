@@ -1,6 +1,16 @@
 # props
 
+## Local
+
+```bash
+env MAVEN_OPTS="--add-modules java.xml.bind" mvn exec:java -Dexec.mainClass=example.props.Props
+[INFO] --- exec-maven-plugin:1.6.0:java (default-cli) @ props ---
+java.awt.graphicsenv=sun.awt.CGraphicsEnvironment|java.awt.printerjob=sun.lwawt.macosx.CPrinterJob|java.class.path=/Users/yujiorama/.sdkman/candidates/maven/current/boot/plexus-classworlds-2.5.2.jar|java.class.version=54.0|java.home=/Users/yujiorama/.sdkman/candidates/java/10.0.1-zulu|java.io.tmpdir=/var/folders/_p/wsr1n1f566l54j7528b8h0k80000gn/T/|java.library.path=/Users/yujiorama/Library/Java/Extensions:/Library/Java/Extensions:/Network/Library/Java/Extensions:/System/Library/Java/Extensions:/usr/lib/java:.|java.runtime.name=OpenJDK Runtime Environment|java.runtime.version=10.0.1+9|java.specification.name=Java Platform API Specification|java.specification.vendor=Oracle Corporation|java.specification.version=10|java.vendor.url.bug=http://www.azulsystems.com/support/|java.vendor.url=http://www.azulsystems.com/|java.vendor.version=Zulu10.2+3|java.vendor=Azul Systems, Inc.|java.version.date=2018-04-17|java.version=10.0.1|java.vm.compressedOopsMode=Zero based|java.vm.info=mixed mode|java.vm.name=OpenJDK 64-Bit Server VM|java.vm.specification.name=Java Virtual Machine Specification|java.vm.specification.vendor=Oracle Corporation|java.vm.specification.version=10|java.vm.vendor=Azul Systems, Inc.|java.vm.version=10.0.1+9
+```
+
 ## AWS Lambda
+
+https://docs.aws.amazon.com/ja_jp/lambda/latest/dg/java-create-jar-pkg-maven-no-ide.html
 
 ```bash
 python -m venv .venv
@@ -31,6 +41,8 @@ aws cloudformation delete-stack --stack-name "${stack_name}"
 ```
 
 ## Azure Function
+
+https://docs.microsoft.com/ja-jp/azure/azure-functions/functions-create-first-java-maven
 
 ```bash
 brew tap azure/function
