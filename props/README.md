@@ -1,8 +1,11 @@
 # props
 
-## Setup process
+## AWS Lambda
 
 ```bash
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
 mvn package
 sam local invoke PropsFunction
 aws s3 mb s3://lambda-function-props
@@ -25,4 +28,30 @@ aws lambda invoke --function-name "${function_name}" /dev/stdout
     "ExecutedVersion": "$LATEST"
 }
 aws cloudformation delete-stack --stack-name "${stack_name}"
+```
+
+## Azure Function
+
+```bash
+brew tap azure/function
+brew install azure-cli azure-functions-core-tools
+python -m venv .venv
+source .venv/bin/activate
+pip install -r requirements.txt
+env MAVEN_OPTS="--add-modules java.xml.bind" mvn clean package
+env MAVEN_OPTS="--add-modules java.xml.bind" mvn azure-functions:deploy
+[INFO] Authenticate with Azure CLI 2.0
+[INFO] Updating the specified function app...
+[INFO] Successfully updated the function app.props-20180922141301620
+[INFO] Trying to deploy the function app...
+[INFO] Successfully deployed the function app at https://props-20180922141301620.azurewebsites.net
+[INFO] ------------------------------------------------------------------------
+[INFO] BUILD SUCCESS
+[INFO] ------------------------------------------------------------------------
+[INFO] Total time: 45.674 s
+[INFO] Finished at: 2018-09-22T15:44:58+09:00
+[INFO] ------------------------------------------------------------------------
+
+curl https://props-20180922141301620.azurewebsites.net/api/PropsFunction
+https://portal.azure.com/
 ```
